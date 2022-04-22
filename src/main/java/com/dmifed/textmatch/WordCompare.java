@@ -23,7 +23,7 @@ public class WordCompare {
         originWord = originWord.toLowerCase();
         inspectWord = inspectWord.toLowerCase();
         if (originWord.equals(inspectWord)) {
-            System.out.println("whole " + originWord + "--" + inspectWord);
+            //System.out.println("whole " + originWord + "--" + inspectWord);
             return LevelSimilarity.WHOLE;
         }
         if (inspectWord.length() < minSymbolsInInspectWord) {
@@ -31,22 +31,22 @@ public class WordCompare {
         }
 
         if (originWord.length() > lenOfWordToMathWhole) {
-            System.out.println("checking word base");
+            //System.out.println("checking word base");
             double percent = (double) percentLengthWordMatch / 100;
             int minLengthOfSamePart = (int) (originWord.length() * percent);
             if (minLengthOfSamePart > inspectWord.length()) {
-                System.out.println("minLengthOfSamePart > inspectWord.length");
+                //System.out.println("minLengthOfSamePart > inspectWord.length");
                 return LevelSimilarity.NONE;
             }
             String originBase = originWord.substring(0, minLengthOfSamePart);
-            System.out.println("comparing " + originBase + " from " + originWord + " with " + inspectWord);
+            //System.out.println("comparing " + originBase + " from " + originWord + " with " + inspectWord);
             if (inspectWord.contains(originBase)) {
-                System.out.println(originWord + " -> " + originBase + " contains in " + inspectWord);
-                System.out.println("similar " + originWord + " " + inspectWord);
+                //System.out.println(originWord + " -> " + originBase + " contains in " + inspectWord);
+                //System.out.println("similar " + originWord + " " + inspectWord);
                 return LevelSimilarity.SIMILAR;
             }
         }
-        System.out.println();
+        //System.out.println();
         return LevelSimilarity.NONE;
     }
 

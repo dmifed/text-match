@@ -23,6 +23,7 @@ public class StringCompare {
         List<LevelSimilarity> similarities = new ArrayList<>();
         originalString = deletePunctuation(originalString);
         comparingString = deletePunctuation(comparingString);
+        //System.out.println("compare strings " + originalString + " with " + comparingString);
 
         if (originalString.equals(comparingString)) {
             similarities.add(LevelSimilarity.FULL_MATCH);
@@ -34,10 +35,13 @@ public class StringCompare {
 
         for(String originalWord : originalWords){
             LevelSimilarity level = LevelSimilarity.NONE;
+            boolean hasSimilar = false;
             for(String comparingWord : comparingWords){
                 level = wordCompare.wordsSimilarityCompare(originalWord, comparingWord);
+                similarities.add(level);
+                if(level != LevelSimilarity.NONE) hasSimilar = true;
             }
-            if(level == LevelSimilarity.NONE){
+            if(!hasSimilar){
                 level = checkAssociations(originalWord, comparingWords);
             }
             similarities.add(level);
@@ -56,7 +60,7 @@ public class StringCompare {
         for (String assoc : association)        {
             for(String comparingWord : comparingWords){
                 if(assoc.equals(comparingWord)){
-                    System.out.println("assoc " + originalWord + " " + assoc);
+                    //System.out.println("assoc " + originalWord + " " + assoc);
                     return LevelSimilarity.ASSOCIATION;
                 }
             }

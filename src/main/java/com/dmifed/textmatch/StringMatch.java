@@ -23,7 +23,7 @@ public class StringMatch {
 
         for(String s : stringList){
             List<LevelSimilarity> levels = stringCompare.compare(source, s);
-            System.out.println(s + " simsilarity weight " + levels);
+            //System.out.println(s + " simsilarity weight " + levels);
             if(levels.size() == 1 && levels.get(0) == LevelSimilarity.FULL_MATCH){
                 return s;
             }
