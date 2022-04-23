@@ -1,4 +1,4 @@
-package com.dmifed.textmatch;
+package com.dmifed.textmatch.compare;
 
 /**
  * Created by DIMA, on 20.04.2022

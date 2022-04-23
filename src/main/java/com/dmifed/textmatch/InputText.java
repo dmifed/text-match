@@ -1,5 +1,6 @@
 package com.dmifed.textmatch;
 
+import com.dmifed.textmatch.defaults.ConfigDefaults;
 import lombok.Getter;
 
 import java.io.File;
@@ -56,7 +57,7 @@ public class InputText {
             list.add(scanner.nextLine());
         }
         second = list;
-        System.out.println(second);
+        scanner.close();
     }
 
 

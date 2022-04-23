@@ -1,4 +1,4 @@
-package com.dmifed.textmatch;
+package com.dmifed.textmatch.compare;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,15 +15,12 @@ public class StringCompare {
         this.wordCompare = wordCompare;
         this.associations = associations;
     }
-    public StringCompare(WordCompare wordCompare) {
-        this(wordCompare, null);
-    }
+
 
     List<LevelSimilarity> compare(String originalString, String comparingString){
         List<LevelSimilarity> similarities = new ArrayList<>();
         originalString = deletePunctuation(originalString);
         comparingString = deletePunctuation(comparingString);
-        //System.out.println("compare strings " + originalString + " with " + comparingString);
 
         if (originalString.equals(comparingString)) {
             similarities.add(LevelSimilarity.FULL_MATCH);
@@ -60,7 +57,6 @@ public class StringCompare {
         for (String assoc : association)        {
             for(String comparingWord : comparingWords){
                 if(assoc.equals(comparingWord)){
-                    //System.out.println("assoc " + originalWord + " " + assoc);
                     return LevelSimilarity.ASSOCIATION;
                 }
             }

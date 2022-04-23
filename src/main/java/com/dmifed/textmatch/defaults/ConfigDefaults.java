@@ -1,4 +1,4 @@
-package com.dmifed.textmatch;
+package com.dmifed.textmatch.defaults;
 
 import java.util.Map;
 

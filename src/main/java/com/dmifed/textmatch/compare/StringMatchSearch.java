@@ -1,4 +1,4 @@
-package com.dmifed.textmatch;
+package com.dmifed.textmatch.compare;
 
 import java.util.List;
 import java.util.Properties;
@@ -6,14 +6,17 @@ import java.util.Properties;
 /**
  * Created by DIMA, on 21.04.2022
  */
-public class StringMatch {
-    private String defaultMatchString;
-    private WordCompare wordCompare;
-    private Associations associations;
-    private ScoreOfSimilarity scoreOfSimilarity;
+public class StringMatchSearch {
+    private final String defaultMatchString;
+    private final WordCompare wordCompare;
+    private final Associations associations;
+    private final ScoreOfSimilarity scoreOfSimilarity;
 
-    public StringMatch(Properties properties) {
-        init(properties);
+    public StringMatchSearch(Properties properties) {
+        defaultMatchString = properties.getProperty("defaultMatchString");
+        wordCompare = new WordCompare(properties);
+        associations = new Associations(properties);
+        scoreOfSimilarity = new ScoreOfSimilarity(properties);
     }
 
     public String selectClosestString(String source, List<String> stringList){
@@ -23,7 +26,6 @@ public class StringMatch {
 
         for(String s : stringList){
             List<LevelSimilarity> levels = stringCompare.compare(source, s);
-            //System.out.println(s + " simsilarity weight " + levels);
             if(levels.size() == 1 && levels.get(0) == LevelSimilarity.FULL_MATCH){
                 return s;
             }
@@ -34,12 +36,5 @@ public class StringMatch {
             }
         }
         return bestMatch;
-    }
-
-    private void init(Properties properties){
-        defaultMatchString = properties.getProperty("defaultMatchString");
-        wordCompare = new WordCompare(properties);
-        associations = new Associations(properties);
-        scoreOfSimilarity = new ScoreOfSimilarity(properties);
     }
 }

@@ -1,4 +1,6 @@
-package com.dmifed.textmatch;
+package com.dmifed.textmatch.compare;
+
+import com.dmifed.textmatch.defaults.ConfigDefaults;
 
 import java.util.Properties;
 import java.util.logging.Logger;
