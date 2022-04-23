@@ -35,6 +35,9 @@ public class StringCompare {
             boolean hasSimilar = false;
             for(String comparingWord : comparingWords){
                 level = wordCompare.wordsSimilarityCompare(originalWord, comparingWord);
+                if(level == LevelSimilarity.NONE){
+                    level = wordCompare.wordsSimilarityCompare(comparingWord, originalWord);
+                }
                 similarities.add(level);
                 if(level != LevelSimilarity.NONE) hasSimilar = true;
             }

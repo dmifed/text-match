@@ -50,7 +50,6 @@ public class InputText {
             list.add(scanner.nextLine());
         }
         first = list;
-        System.out.println(first);
         list = new ArrayList<>();
         countLine = Integer.parseInt(scanner.nextLine());
         for(int i = 0; i < countLine; i++){
